@@ -1,13 +1,16 @@
 ﻿using Application.Activities;
 using Domain;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 
 namespace API.Controllers
 {
     public class ActivitiesController : BaseApiController
     {
-        [HttpGet] // api/activities
+        [HttpGet]
         public async Task<ActionResult<List<Activity>>> GetActivities()
         {
             return await Mediator.Send(new List.Query());
